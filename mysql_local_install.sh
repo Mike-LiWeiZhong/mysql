@@ -63,7 +63,7 @@ function mysql_memory_conf(){
 
 # 数据库二进制解压安装
 function mysql_install(){
-	yum -y install gcc gcc-c++ make automake expect git
+	yum -y install gcc gcc-c++ make automake expect git numactl
 
         if [ -f /data/softsrc/mysql-5.6.46-linux-glibc2.12-x86_64.tar.gz ];then
           cd /data/softsrc;tar -xf mysql-5.6.46-linux-glibc2.12-x86_64.tar.gz -C /usr/local
@@ -137,7 +137,6 @@ function mysql_conf(){
 	echo -e "Local pwd file in  \033[32m /root/secret.txt \033[0m"
 }
 
-# 重启数据库服务函数
 # 重启数据库服务函数
 function mysql_restart(){
         if [[ $os_version == "6" ]];then
