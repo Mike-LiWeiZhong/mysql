@@ -1,0 +1,2 @@
+# 每天凌晨0点切割MySQL慢日志
+0 0 * * * /data/scripts/cut_db_slow_log.sh

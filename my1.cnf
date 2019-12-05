@@ -1,0 +1,105 @@
+[mysqld]
+bind-address = 0.0.0.0
+port		= 3306
+socket		= /data/mysql/data1/mysql.sock
+datadir 	= /data/mysql/data1
+character-set-server = utf8
+
+event_scheduler = 1
+performance_schema_max_thread_instances = 2500
+#rpl_semi_sync_master_enabled = 1
+#rpl_semi_sync_master_timeout = 3000 # 1 second
+#rpl_semi_sync_slave_enabled = 1 
+replicate-ignore-db = mysql
+replicate-ignore-db = test
+replicate-ignore-db = performance_schema
+replicate-ignore-db = information_schema
+#replicate-do-db = demo
+
+log_slave_updates = 1
+#auto_increment_increment = 2
+#auto_increment_offset = 1
+#skip-locking
+#slave-skip-errors = all
+secure_file_priv = /data/mysql/
+
+sync_binlog = 1000
+back_log = 1000
+max_connections = 3096
+max_connect_errors = 100000
+table_open_cache = 4096
+max_allowed_packet = 160M
+
+slow-query-log = on
+slow-query-log-file = /data/mysql/data1/HostName-slow.log
+long_query_time = 2
+#log-queries-not-using-indexes = on
+
+log-bin = mysql-bin
+max_binlog_size = 512M
+expire_logs_days = 7
+binlog_format = MIXED
+binlog_cache_size = 16M
+binlog_stmt_cache_size = 4M
+max_heap_table_size = 64M
+read_buffer_size = 2M
+read_rnd_buffer_size = 16M
+sort_buffer_size = 8M
+join_buffer_size = 8M
+query_cache_size = 64M
+query_cache_limit = 2M
+query_cache_type = 1
+ft_min_word_len = 4
+secure_file_priv = ''
+
+default-storage-engine = innodb
+thread_stack = 512K
+thread_cache_size = 32
+thread_concurrency = 32
+transaction_isolation = REPEATABLE-READ
+tmp_table_size = 256M
+skip-name-resolve
+
+server-id = ID
+key_buffer_size = 32M
+bulk_insert_buffer_size = 16M
+myisam_sort_buffer_size = 32M
+myisam_max_sort_file_size = 2G
+myisam_repair_threads = 1
+
+innodb_buffer_pool_instances = 12
+innodb_buffer_pool_size = MemoryG
+innodb_data_file_path = ibdata1:10M:autoextend
+innodb_file_per_table = 1
+innodb_write_io_threads = 64
+innodb_read_io_threads = 64
+innodb_thread_concurrency = 24
+innodb_flush_log_at_trx_commit = 2
+innodb_log_buffer_size = 16M
+innodb_log_file_size = 256M
+innodb_log_files_in_group = 3
+innodb_max_dirty_pages_pct = 90
+innodb_lock_wait_timeout = 120
+innodb_use_native_aio = on
+
+[mysqldump]
+quick
+max_allowed_packet = 512M
+
+[mysql]
+prompt = "\\u@\\h : \\d \\r:\\m:\\s>"
+auto-rehash
+default-character-set=utf8
+
+[myisamchk]
+key_buffer_size = 512M
+sort_buffer_size = 512M
+read_buffer = 8M
+write_buffer = 8M
+
+[mysqlhotcopy]
+interactive-timeout
+
+[mysqld_safe]
+open-files-limit = 81920
+
