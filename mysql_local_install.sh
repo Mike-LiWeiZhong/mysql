@@ -61,7 +61,7 @@ function mysql_memory_conf(){
 
 # 数据库二进制解压安装
 function mysql_install(){
-	yum -y install gcc gcc-c++ make automake expect git numactl
+        yum -y install gcc gcc-c++ make automake expect git numactl mysql-utilities
 
         if [ -f /data/softsrc/mysql-5.6.46-linux-glibc2.12-x86_64.tar.gz ];then
           cd /data/softsrc;tar -xf mysql-5.6.46-linux-glibc2.12-x86_64.tar.gz -C /usr/local
