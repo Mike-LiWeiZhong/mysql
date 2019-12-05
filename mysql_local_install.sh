@@ -40,7 +40,6 @@ function mysql_backup (){
 	fi
 }
 
-
 # 数据库内存函数定义
 function mysql_memory_conf(){
         memory=`free -m -t |grep Mem |awk '{print $2}'`
@@ -59,7 +58,6 @@ function mysql_memory_conf(){
                 MEM=2
         fi
 }
-
 
 # 数据库二进制解压安装
 function mysql_install(){
@@ -94,7 +92,6 @@ function mysql_install(){
 	sed -i "s/ID/$SERVERID/g" /data/mysql/conf/my1.cnf
 	sed -i "s/IP/$LocalIP/g" /data/mysql/conf/my1.cnf
 }
-
 
 # 数据库初始化函数
 function mysql_init(){
